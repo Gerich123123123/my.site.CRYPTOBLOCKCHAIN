@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>CryptoWorld | Мониторинг</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="top-bar">
+        <div>
+            КУДА МОЖНО ОБРАТИТЬСЯ -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- >
+        </div>
+
+        <div>
+            Email:
+            <a href="mailto:support676767@crypto.com">
+                support676767@crypto.com
+            </a>
+        </div>
+    </div>
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="market.html" style="color:white">Мониторинг</a>
+        <a href="about.html">Технология</a>
+        <a href="svaz.html">Связь</a>
+    </nav>
+
+    <div class="container">
+
+        <h1 style="font-size: 3rem; margin-bottom: 50px;">
+            Live <span style="color:#38bdf8">Market</span>
+        </h1>
+
+        <div class="crypto-grid">
+
+            <div class="card">
+                <div class="ticker">BITCOIN / BTC</div>
+                <div id="btc-price" class="price">$40,000</div>
+                <div class="change-tag">
+                    +$<span id="btc-log">0</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="ticker">ETHEREUM / ETH</div>
+                <div id="eth-price" class="price">$2,200</div>
+                <div class="change-tag">
+                    +$<span id="eth-log">0</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="ticker">SOLANA / SOL</div>
+                <div id="sol-price" class="price">$105</div>
+                <div class="change-tag">
+                    +$<span id="sol-log">0</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+<script>
+const mySteps = [101, 121, 5345, 21312, 21523, 6767, 5555, 231];
+
+let btc = 40000,
+    eth = 2200,
+    sol = 105,
+    i = 0;
+
+function update() {
+
+    const step = mySteps[i];
+
+    btc += step;
+    eth += step;
+    sol += step;
+
+    document.getElementById('btc-price').innerText = '$' + btc.toLocaleString();
+    document.getElementById('btc-log').innerText = step.toLocaleString();
+
+    document.getElementById('eth-price').innerText = '$' + eth.toLocaleString();
+    document.getElementById('eth-log').innerText = step.toLocaleString();
+
+    document.getElementById('sol-price').innerText = '$' + sol.toLocaleString();
+    document.getElementById('sol-log').innerText = step.toLocaleString();
+
+    i = (i + 1) % mySteps.length;
+}
+
+setInterval(update, 1000);
+</script>
+
+</body>
+</html>
