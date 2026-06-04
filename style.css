@@ -1,202 +1,229 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-scroll-behavior:smooth;
+/* Базовые настройки */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
-body{
-font-family:'Segoe UI',sans-serif;
-background:#0f172a;
-color:#fff;
-overflow-x:hidden;
-background:radial-gradient(circle at top center,#1e293b 0%,#0f172a 100%);
+body {
+    background: #0f172a;
+    color: #ffffff;
+    line-height: 1.6;
 }
 
-body::before{
-content:"";
-position:fixed;
-inset:0;
-background-image:
-linear-gradient(rgba(56,189,248,.03) 1px,transparent 1px),
-linear-gradient(90deg,rgba(56,189,248,.03) 1px,transparent 1px);
-background-size:50px 50px;
-z-index:-1;
+/* Навигационная панель */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(15, 23, 42, 0.9);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #1e293b;
+    z-index: 1000;
 }
 
-nav{
-position:fixed;
-top:33px;
-width:100%;
-padding:20px;
-text-align:center;
-background:rgba(15,23,42,.8);
-backdrop-filter:blur(10px);
-border-bottom:1px solid rgba(255,255,255,.1);
-z-index:1000;
+.nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    text-align: center;
 }
 
-nav a{
-color:#38bdf8;
-margin:0 20px;
-text-decoration:none;
-font-weight:bold;
-transition:.3s;
+nav a {
+    color: #94a3b8;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 600;
+    transition: 0.2s;
 }
 
-nav a:hover{
-color:#fff;
+nav a:hover, nav a.active {
+    color: #38bdf8;
 }
 
-.top-bar{
-position:fixed;
-top:0;
-width:100%;
-padding:8px 20px;
-display:flex;
-justify-content:space-between;
-background:#38bdf8;
-color:#0f172a;
-font-size:13px;
-font-weight:bold;
-z-index:1001;
+/* Главный баннер (Hero) */
+.hero {
+    padding: 160px 20px 80px;
+    text-align: center;
+    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
 }
 
-.top-bar a{
-color:#0f172a;
-text-decoration:none;
+.hero h1 {
+    font-size: 3.5rem;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
 }
 
-.hero{
-padding:250px 20px 120px;
-text-align:center;
+.hero h1 span, h2 span {
+    color: #38bdf8;
 }
 
-.hero h1{
-font-size:4.5rem;
+.hero p {
+    color: #94a3b8;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    font-size: 1.1rem;
 }
 
-.hero span,
-h2,
-.news-tag,
-.price,
-.card i{
-color:#38bdf8;
+/* Контейнеры контента */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    text-align: center;
 }
 
-.btn-main,
-.contact-btn{
-display:inline-block;
-margin-top:20px;
-padding:15px 35px;
-border-radius:50px;
-background:#38bdf8;
-color:#0f172a;
-font-weight:bold;
-text-decoration:none;
-transition:.3s;
+.page-start {
+    padding-top: 140px; /* Отступ сверху, чтобы меню не перекрывало заголовок */
 }
 
-.btn-main:hover,
-.card:hover{
-transform:translateY(-10px);
+.container h2 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
 }
 
-.container,
-.content{
-max-width:1100px;
-margin:auto;
-padding:150px 20px;
-text-align:center;
+.container > p {
+    color: #94a3b8;
+    margin-bottom: 40px;
 }
 
-.news-grid,
-.crypto-grid,
-.grid{
-display:grid;
-gap:30px;
+/* Адаптивная сетка и Карточки */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
 }
 
-.news-grid{
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+.card {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 16px;
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.3s, border-color 0.3s;
 }
 
-.crypto-grid{
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #38bdf8;
 }
 
-.grid{
-grid-template-columns:1fr 1fr;
+/* Внутренности карточек новостей */
+.card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
 }
 
-.news-card,
-.card,
-.section,
-.mini-card{
-background:rgba(30,41,59,.4);
-backdrop-filter:blur(10px);
-border-radius:30px;
-border:1px solid rgba(255,255,255,.1);
+.card-body {
+    padding: 20px;
 }
 
-.news-card,
-.card{
-overflow:hidden;
-transition:.3s;
+.card-body h3 {
+    margin: 10px 0;
+    font-size: 1.3rem;
 }
 
-.news-card:hover,
-.card:hover{
-border-color:#38bdf8;
-box-shadow:0 0 40px rgba(56,189,248,.3);
+.card-body p {
+    color: #94a3b8;
+    font-size: 0.95rem;
 }
 
-.news-img{
-width:100%;
-height:220px;
-object-fit:cover;
+/* Специфичные карточки */
+.tech-card {
+    padding: 25px;
+    border-top: 4px solid #38bdf8;
 }
 
-.news-body,
-.section,
-.card{
-padding:30px;
+.tech-card p {
+    color: #94a3b8;
+    margin-top: 10px;
 }
 
-p{
-color:#94a3b8;
-line-height:1.8;
+.market-card {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.mini-card{
-border-left:5px solid #38bdf8;
+.link-card {
+    padding: 30px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
 }
 
-.ticker{
-font-size:14px;
-color:#64748b;
-letter-spacing:2px;
+/* Элементы UI (Кнопки, Теги, Иконки) */
+.btn {
+    display: inline-block;
+    background: #38bdf8;
+    color: #0f172a;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.2s;
 }
 
-.price{
-font-size:48px;
-font-family:monospace;
-font-weight:900;
+.btn:hover {
+    background: #7dd3fc;
 }
 
-.change-tag{
-display:inline-block;
-margin-top:20px;
-padding:6px 16px;
-border-radius:12px;
-background:#10b981;
-color:#0f172a;
-font-weight:bold;
+.btn.small {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    margin-top: 15px;
+    width: 100%;
 }
 
-footer{
-padding:80px;
-text-align:center;
-background:#0b0f1a;
-color:#475569;
+.tag {
+    background: rgba(56, 189, 248, 0.1);
+    color: #38bdf8;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.ticker {
+    font-size: 0.85rem;
+    color: #64748b;
+    font-weight: bold;
+}
+
+.price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #38bdf8;
+}
+
+.badge {
+    align-self: flex-start;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.badge.success {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+}
+
+.icon {
+    font-size: 3rem;
+    color: #38bdf8;
+    margin-bottom: 15px;
+}
+
+/* Подвал */
+footer {
+    padding: 40px 20px;
+    text-align: center;
+    color: #475569;
+    font-size: 0.9rem;
+    border-top: 1px solid #1e293b;
+    margin-top: 60px;
 }
